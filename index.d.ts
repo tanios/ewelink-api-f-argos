@@ -9,7 +9,7 @@ declare module 'ewelink-api' {
     /**
     * Login into eWeLink API and get auth credentials.
     */
-    login(): Promise<LoginInfo>
+     getCredentials(): Promise<LoginInfo>
     /**
     * Opens a socket connection to eWeLink and listen for real-time events.
     */
