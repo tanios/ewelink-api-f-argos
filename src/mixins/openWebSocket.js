@@ -18,7 +18,7 @@ module.exports = {
     const dispatch = await this.getWebSocketServer();
     const WSS_URL = `wss://${dispatch.domain}:${dispatch.port}/api/ws`;
 
-    const payloadLogin = wssLoginPayload({
+    let payloadLogin = wssLoginPayload({
       at: this.at,
       apiKey: this.apiKey,
       appid: this.APP_ID,
@@ -41,7 +41,20 @@ module.exports = {
     await wsp.send(payloadLogin);
 
     setInterval(async () => {
-      await wsp.send('ping');
+      try {
+        await wsp.send('ping');
+      } catch (error) {
+        console.error(`openWebSocket.js: ${error}`);
+        console.log(`openWebSocket.js: Reconnecting...`);
+        const auth = await this.getCredentials();
+        payloadLogin = wssLoginPayload({
+          at: auth.at,
+          apiKey: auth.user.apikey,
+          appid: this.APP_ID,
+        });
+        await wsp.open();
+        await wsp.send(payloadLogin);
+      }
     }, heartbeat);
 
     return wsp;
