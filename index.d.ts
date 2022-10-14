@@ -4,12 +4,12 @@
 declare module 'ewelink-api' {
   export default eWelink;
 
-    class eWelink {
+  class eWelink {
     constructor({ }: { email: string; password: string; } | { at: string; } | { at: string; apiKey: string; });
     /**
     * Login into eWeLink API and get auth credentials.
     */
-     getCredentials(): Promise<LoginInfo>
+    getCredentials(): Promise<LoginInfo>
     /**
     * Opens a socket connection to eWeLink and listen for real-time events.
     */
@@ -110,6 +110,19 @@ declare module 'ewelink-api' {
     startup: string;
     fwVersion: string;
     switch: string;
+    switches: Switch[];
+    power: string,
+    voltage: string,
+    current: string,
+    appPower: string,
+    reactPower: string,
+    dayKwh: string,
+    dayWorkTime: number,
+  }
+
+  export interface Switch {
+    switch: string
+    outlet: number
   }
 
   export interface BindInfos {
