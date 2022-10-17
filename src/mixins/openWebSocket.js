@@ -14,7 +14,7 @@ module.exports = {
    * @param heartbeat
    * @returns {Promise<WebSocketAsPromised>}
    */
-  async openWebSocket(callback, ...{ heartbeat = 120000 }) {
+  async openWebSocket(callback, ...{ heartbeat = 60000 }) {
     const dispatch = await this.getWebSocketServer();
     const WSS_URL = `wss://${dispatch.domain}:${dispatch.port}/api/ws`;
 
