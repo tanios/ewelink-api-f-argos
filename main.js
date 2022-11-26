@@ -14,6 +14,7 @@ class eWeLink {
       phoneNumber = null,
       password = null,
       at = null,
+      rt = null,
       apiKey = null,
       devicesCache = null,
       arpTable = null,
@@ -27,6 +28,7 @@ class eWeLink {
       phoneNumber,
       password,
       at,
+      rt,
       apiKey,
       devicesCache,
       arpTable,
@@ -41,6 +43,7 @@ class eWeLink {
     this.email = email;
     this.password = password;
     this.at = at;
+    this.rt = rt;
     this.apiKey = apiKey;
     this.devicesCache = devicesCache;
     this.arpTable = arpTable;
@@ -51,7 +54,16 @@ class eWeLink {
 
   // eslint-disable-next-line class-methods-use-this
   checkLoginParameters(params) {
-    const { email, phoneNumber, password, devicesCache, arpTable, at } = params;
+    const {
+      email,
+      phoneNumber,
+      password,
+      devicesCache,
+      arpTable,
+      at,
+      rt,
+      apiKey,
+    } = params;
 
     if (email !== null && phoneNumber !== null) {
       return false;
@@ -61,7 +73,7 @@ class eWeLink {
       (email !== null && password !== null) ||
       (phoneNumber !== null && password !== null) ||
       (devicesCache !== null && arpTable !== null) ||
-      at !== null
+      (at !== null && rt !== null && apiKey !== null)
     ) {
       return true;
     }
