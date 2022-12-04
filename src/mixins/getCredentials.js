@@ -46,7 +46,7 @@ module.exports = {
     return {
       user: {
         email: this.email,
-        apikey: this.apiKey,
+        apiKey: this.apiKey,
       },
       at: this.at,
       rt: this.rt,

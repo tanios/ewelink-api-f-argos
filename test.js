@@ -32,8 +32,8 @@ const functions = [
     console.log(client);
     const credential2 = await client.getCredentials();
     console.log(credential2);
-    const devices = await client.getDevices();
-    console.log(devices);
+    // const devices = await client.getDevices();
+    // console.log(devices);
     return 0;
   },
 ];
