@@ -58,6 +58,11 @@ declare module 'ewelink-api' {
      * Return firmware version for specified device.
      */
     getFirmwareVersion(deviceId: string): Promise<FirmwareVersion>
+
+    wsp: WebSocket
+
+    activeWebSocket: boolean
+    
   }
 
   export interface Device {
