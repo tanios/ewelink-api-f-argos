@@ -15,6 +15,8 @@ module.exports = {
    * @returns {Promise<WebSocketAsPromised>}
    */
   async openWebSocket(callback, ...{ heartbeat = 60000 }) {
+    if (this.activeWebSocket === true)
+      return console.error('WebSocket already open');
     const dispatch = await this.getWebSocketServer();
     const WSS_URL = `wss://${dispatch.domain}:${dispatch.port}/api/ws`;
 
@@ -24,11 +26,12 @@ module.exports = {
       appid: this.APP_ID,
     });
 
-    const wsp = new WebSocketAsPromised(WSS_URL, {
+    this.wsp = new WebSocketAsPromised(WSS_URL, {
       createWebSocket: (wss) => new W3CWebSocket(wss),
     });
 
-    wsp.onMessage.addListener((message) => {
+    this.wsp.onMessage.addListener((message) => {
+      this.activeWebSocket = true;
       try {
         const data = JSON.parse(message);
         callback(data);
@@ -37,12 +40,12 @@ module.exports = {
       }
     });
 
-    await wsp.open();
-    await wsp.send(payloadLogin);
+    await this.wsp.open();
+    await this.wsp.send(payloadLogin);
 
-    setInterval(async () => {
+    const interval = setInterval(async () => {
       try {
-        await wsp.send('ping');
+        await this.wsp.send('ping');
       } catch (error) {
         console.error(`openWebSocket.js: ${error}`);
         console.log(`openWebSocket.js: Reconnecting...`);
@@ -52,18 +55,22 @@ module.exports = {
           apiKey: auth.user.apikey,
           appid: this.APP_ID,
         });
-        await wsp.open();
-        await wsp.send(payloadLogin);
+        await this.wsp.open();
+        await this.wsp.send(payloadLogin);
       }
     }, heartbeat);
 
-    return wsp;
+    this.wsp.onClose.addListener(() => {
+      console.log(`openWebSocket.js: Connection closed`);
+      clearInterval(interval);
+      this.activeWebSocket = false;
+      this.wsp = undefined;
+    });
   },
 
   async getWebSocketServer() {
     const requestUrl = this.getDispatchServiceUrl();
     const request = await fetch(`${requestUrl}/dispatch/app`);
-
     if (!request.ok) {
       throw new Error(`[${request.status}] ${errors[request.status]}`);
     }

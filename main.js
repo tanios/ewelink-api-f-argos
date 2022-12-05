@@ -47,6 +47,7 @@ class eWeLink {
     this.apiKey = apiKey;
     this.devicesCache = devicesCache;
     this.arpTable = arpTable;
+    this.activeWebSocket = false;
 
     this.APP_ID = APP_ID;
     this.APP_SECRET = APP_SECRET;

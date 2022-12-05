@@ -28,10 +28,37 @@ const functions = [
     return 0;
   },
   async function main2() {
+    console.log(credentials2);
     const client = new eWeLink(credentials2);
     console.log(client);
     const credential2 = await client.getCredentials();
     console.log(credential2);
+    // const devices = await client.getDevices();
+    // console.log(devices);
+    return 0;
+  },
+  async function main3() {
+    const client = new eWeLink(credentials2);
+    await client.getCredentials();
+    console.log(client.activeWebSocket);
+    await client.openWebSocket((data) => {
+      console.log(client.activeWebSocket);
+    });
+    setTimeout(async () => {
+      await client.openWebSocket((data) => {
+        console.log(client.activeWebSocket);
+      });
+    }, 2000);
+
+    setTimeout(() => {
+      console.log('Closing connection...');
+      client.wsp.close();
+    }, 5000);
+
+    setTimeout(() => {
+      console.log(client.activeWebSocket);
+      console.log(client.wsp);
+    }, 8000);
     // const devices = await client.getDevices();
     // console.log(devices);
     return 0;
