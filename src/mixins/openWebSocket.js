@@ -14,7 +14,7 @@ module.exports = {
    * @param heartbeat
    * @returns {Promise<WebSocketAsPromised>}
    */
-  async openWebSocket(callback, ...{ heartbeat = 60000 }) {
+  async openWebSocket(callback, ...{ heartbeat = 10000 }) {
     if (this.activeWebSocket === true)
       return console.error('WebSocket already open');
     const dispatch = await this.getWebSocketServer();
