@@ -47,6 +47,7 @@ module.exports = {
       try {
         await this.wsp.send('ping');
       } catch (error) {
+        this.activeWebSocket = false;
         console.error(`openWebSocket.js: ${error}`);
         console.log(`openWebSocket.js: Reconnecting...`);
         const auth = await this.getCredentials();
