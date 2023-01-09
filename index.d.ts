@@ -1,7 +1,7 @@
 // Type definitions for ewelink-api
 // Definitions by: Alexander Méhes https://github.com/BMXsanko
 
-declare module 'ewelink-api' {
+declare module 'ewelink-api-f-argos' {
   export default eWelink;
 
   class eWelink {

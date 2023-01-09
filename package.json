@@ -1,16 +1,16 @@
 {
-  "name": "ewelink-api",
-  "version": "3.1.1",
+  "name": "ewelink-api-f-argos",
+  "version": "4.0.6",
   "description": "eWeLink API for Node.js",
-  "author": "Martín M.",
+  "author": "Fork from Martín M.",
   "license": "MIT",
   "typings": "./index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skydiver/ewelink-api.git"
+    "url": "git+https://github.com/MrRomo/ewelink-api"
   },
   "bugs": {
-    "url": "https://github.com/skydiver/ewelink-api/issues"
+    "url": "https://github.com/MrRomo/ewelink-apiissues"
   },
   "keywords": [
     "ewelink",
