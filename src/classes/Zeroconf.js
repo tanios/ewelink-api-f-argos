@@ -1,5 +1,5 @@
 const fs = require('fs');
-const arpping = require('arpping')({});
+const arpping = require('../arpping')({});
 
 class Zeroconf {
   /**
@@ -24,10 +24,10 @@ class Zeroconf {
    * @param hosts
    */
   static fixMacAddresses(hosts) {
-    return hosts.map(host => {
+    return hosts.map((host) => {
       const octets = host.mac.split(':');
 
-      const fixedMac = octets.map(octet => {
+      const fixedMac = octets.map((octet) => {
         if (octet.length === 1) {
           return `0${octet}`;
         }

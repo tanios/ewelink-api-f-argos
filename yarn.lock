@@ -806,13 +806,6 @@ aria-query@^4.2.2:
     "@babel/runtime" "^7.10.2"
     "@babel/runtime-corejs3" "^7.10.2"
 
-"arpping@github:skydiver/arpping":
-  version "0.3.1"
-  resolved "https://codeload.github.com/skydiver/arpping/tar.gz/ae65410343bdcbddb64b37ac9f674c65af1fe92c"
-  dependencies:
-    child_process "^1.0.2"
-    os "^0.1.1"
-
 arr-diff@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/arr-diff/-/arr-diff-4.0.0.tgz#d6461074febfec71e7e15235761a329a5dc7c520"
@@ -1145,11 +1138,6 @@ char-regex@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
-
-child_process@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/child_process/-/child_process-1.0.2.tgz#b1f7e7fc73d25e7fd1d455adc94e143830182b5a"
-  integrity sha512-Wmza/JzL0SiWz7kl6MhIKT5ceIlnFPJX+lwUGj7Clhy5MMldsSoJR0+uvRzOS5Kv45Mq7t1PoE8TsOA9bzvb6g==
 
 chnl@^1.2.0:
   version "1.2.0"
@@ -3605,11 +3593,6 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
-
-os@^0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/os/-/os-0.1.2.tgz#f29a50c62908516ba42652de42f7038600cadbc2"
-  integrity sha512-ZoXJkvAnljwvc56MbvhtKVWmSkzV712k42Is2mA0+0KTSRakq5XXuXpjZjgAt9ctzl51ojhQWakQQpmOvXWfjQ==
 
 ow-lite@^0.0.2:
   version "0.0.2"
