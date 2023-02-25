@@ -1,6 +1,6 @@
 {
   "name": "ewelink-api-f-argos",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "eWeLink API for Node.js",
   "author": "Fork from Martín M.",
   "license": "MIT",
