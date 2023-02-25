@@ -13,7 +13,7 @@ declare module 'ewelink-api-f-argos' {
     /**
     * Opens a socket connection to eWeLink and listen for real-time events.
     */
-    openWebSocket(callback: (data: {}) => void): Promise<any>
+    openWebSocket(callback: (data: {}) => void, { heartbeat }: { heartbeat: number }): Promise<any>
     /**
      * Returns a list of devices associated to logged account.
      */
@@ -62,7 +62,7 @@ declare module 'ewelink-api-f-argos' {
     wsp: WebSocket
 
     activeWebSocket: boolean
-    
+
   }
 
   export interface Device {
