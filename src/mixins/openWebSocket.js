@@ -48,16 +48,10 @@ module.exports = {
         await this.wsp.send('ping');
       } catch (error) {
         this.activeWebSocket = false;
+        clearInterval( interval );
         console.error(`openWebSocket.js: ${error}`);
         console.log(`openWebSocket.js: Reconnecting...`);
-        const auth = await this.getCredentials();
-        payloadLogin = wssLoginPayload({
-          at: auth.at,
-          apiKey: auth.user.apikey,
-          appid: this.APP_ID,
-        });
-        await this.wsp.open();
-        await this.wsp.send(payloadLogin);
+        await this.openWebSocket( callback, {heartbeat: heartbeat} );
       }
     }, heartbeat);
 
