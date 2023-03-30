@@ -74,7 +74,7 @@ class eWeLink {
       (email !== null && password !== null) ||
       (phoneNumber !== null && password !== null) ||
       (devicesCache !== null && arpTable !== null) ||
-      (at !== null && rt !== null && apiKey !== null)
+      at !== null
     ) {
       return true;
     }
