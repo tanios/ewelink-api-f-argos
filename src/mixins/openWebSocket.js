@@ -61,6 +61,8 @@ module.exports = {
       this.activeWebSocket = false;
       this.wsp = undefined;
     });
+
+    return this.wsp;
   },
 
   async getWebSocketServer() {
