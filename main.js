@@ -20,6 +20,7 @@ class eWeLink {
       arpTable = null,
       APP_ID = DEFAULT_APP_ID,
       APP_SECRET = DEFAULT_APP_SECRET,
+      requestCallback = null
     } = parameters;
 
     const check = this.checkLoginParameters({
@@ -51,6 +52,8 @@ class eWeLink {
 
     this.APP_ID = APP_ID;
     this.APP_SECRET = APP_SECRET;
+
+    this.requestCallback = requestCallback;
   }
 
   // eslint-disable-next-line class-methods-use-this

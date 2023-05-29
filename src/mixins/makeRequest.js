@@ -14,7 +14,7 @@ module.exports = {
    * @returns {Promise<{msg: *, error: *}|*>}
    */
   async makeRequest({ method = 'get', url, uri, body = {}, qs = {} }) {
-    const { at, APP_ID } = this;
+    const { at, APP_ID, requestCallback } = this;
 
     if (!at) {
       await this.getCredentials();
@@ -43,6 +43,15 @@ module.exports = {
     const requestUrl = `${apiUrl}${uri}${queryString}`;
 
     const request = await fetch(requestUrl, payload);
+
+    if( typeof requestCallback === 'function' ) {
+
+      try {
+
+        requestCallback( uri );
+      }
+      catch( cbErr ) {}
+    }
 
     /** Catch request status code other than 200 */
     if (!request.ok) {
