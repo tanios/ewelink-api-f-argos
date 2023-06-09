@@ -20,6 +20,17 @@ module.exports = {
     const dispatch = await this.getWebSocketServer();
     const WSS_URL = `wss://${dispatch.domain}:${dispatch.port}/api/ws`;
 
+    const { socketRequestCallback } = this;
+
+    if( typeof socketRequestCallback === 'function' ) {
+
+        try {
+
+          socketRequestCallback();
+        }
+        catch( cbErr ) {}
+    }
+
     let payloadLogin = wssLoginPayload({
       at: this.at,
       apiKey: this.apiKey,
